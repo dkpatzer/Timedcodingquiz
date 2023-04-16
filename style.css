@@ -1,0 +1,210 @@
+/* Reset default styles */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Set body font and background */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 36px;
+    text-align: center;
+    width: 100%;
+}
+
+#high-scores {
+    text-align: left;
+}
+
+#timer-container {
+    text-align: right;
+}
+
+/* Main content styles */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#question-container {
+    margin-bottom: 20px;
+}
+
+#question {
+    font-size: 20px;
+}
+
+#options-container {
+    margin-top: 10px;
+}
+
+.option {
+    font-size: 18px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #f0f0f0;
+}
+
+#score-container {
+    margin-bottom: 10px;
+}
+
+#score {
+    font-weight: bold;
+}
+
+#save-button {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#save-button:hover {
+    background-color: #555;
+}
+
+/* Additional styles for the first page */
+#start-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#start-title {
+    font-size: 48px;
+    margin-bottom: 10px;/* Reset default styles */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Set body font and background */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 36px;
+    text-align: center;
+    width: 100%;
+}
+
+#high-scores {
+    text-align: left;
+}
+
+#timer-container {
+    text-align: right;
+}
+
+/* Main content styles */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#question-container {
+    margin-bottom: 20px;
+}
+
+#question {
+    font-size: 20px;
+}
+
+#options-container {
+    margin-top: 10px;
+}
+
+.option {
+    font-size: 18px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #f0f0f0;
+}
+
+#score-container {
+    margin-bottom: 10px;
+}
+
+#score {
+    font-weight: bold;
+}
+
+#save-button {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#save-button:hover {
+    background-color: #555;
+}
+
+/* Additional styles for the first page */
+#start-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#start-title {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+#start-subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+}
+
+#start-subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
