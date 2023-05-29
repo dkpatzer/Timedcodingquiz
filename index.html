@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coding Quiz Challenge</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Quiz</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div id="intro-container">
-        <!-- Quiz introduction content -->
-        <h1 class="intro-title">Welcome to the Coding Quiz!</h1>
-        <p class="intro-subtitle">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-        <button id="start-button" class="start-button">Start Quiz</button>
+  <header>
+    <div>
+      Time: <span id="time">60</span>
     </div>
-
-    <div id="quiz-container" class="quiz-container hide">
-        <!-- Quiz questions and options -->
-        <h2 id="question" class="question"></h2>
-        <ul id="options-container" class="options-container"></ul>
-        <button id="submit-button" class="button">Submit Answer</button>
+  </header>
+  <div id="start-page" class="page">
+    <div class="container">
+      <h1>Code Quiz</h1>
+      <p>Time: <span id="time">60</span></p>
+      <p>Test your coding knowledge with this quiz!</p>
+      <button id="start-button">Start Quiz</button>
     </div>
+  </div>
 
-    <div id="result-container" class="result-container hide">
-        <!-- Quiz result -->
-        <h2 id="result" class="result"></h2>
-        <p>Your score: <span id="score" class="score"></span></p>
-        <button id="restart-button" class="button">Restart Quiz</button>
+  <div id="quiz-page" class="page hide">
+    <div class="container">
+      <h2 id="question"></h2>
+      <ul id="options-container"></ul> <!-- Changed from <div> to <ul> -->
+      <button id="submit-button">Submit</button>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <div id="result-page" class="page hide">
+    <div class="container">
+      <h2>Quiz Completed!</h2>
+      <p>Your score is: <span id="score"></span></p>
+      <div id="result-content">
+        <h3>Correct Answers:</h3>
+        <div id="correct-answers"></div>
+      </div>
+      <input type="text" id="initials-input" placeholder="Enter your initials">
+      <button id="save-button">Save Score</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
+
+
+
+
 

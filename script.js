@@ -1,106 +1,214 @@
-// Define quiz questions and answers
-const questions = [
-    {
-        question: "What is the correct syntax for creating a new array in JavaScript?",
-        options: ["[ ]", "{ }", "( )", "< >"],
-        answer: "[ ]"
-    },
-    {
-        question: "Which of the following is NOT a JavaScript data type?",
-        options: ["number", "string", "boolean", "array"],
-        answer: "array"
-    },
-    {
-        question: "What is the result of the following expression: '5' + 3?",
-        options: ["8", "53", "NaN", "Error"],
-        answer: "53"
-    },
-    {
-        question: "Which of the following is NOT a comparison operator in JavaScript?",
-        options: ["==", "===", "<=", ">="],
-        answer: "==="
-    },
-    {
-        question: "Which built-in method in JavaScript is used to sort an array?",
-        options: ["sort()", "order()", "arrange()", "organize()"],
-        answer: "sort()"
-    }
+// Store the quiz questions and answers
+const quizQuestions = [
+  {
+    question: "What is the correct syntax for referring to an external script called 'script.js'?",
+    options: [
+      "<script src='script.js'></script>",
+      "<script href='script.js'></script>",
+      "<script ref='script.js'></script>",
+      "<script name='script.js'></script>"
+    ],
+    answer: "<script src='script.js'></script>"
+  },
+  {
+    question: "Which built-in method removes the last element from an array and returns that element?",
+    options: ["last()", "get()", "pop()", "remove()"],
+    answer: "pop()"
+  },
+  {
+    question: "How can you get the type of arguments passed to a function?",
+    options: ["using typeof operator", "using getType function", "using getTypeOf method", "using type property"],
+    answer: "using typeof operator"
+  },
+  {
+    question: "What is the output of the following code?\nconsole.log(1 + '1');",
+    options: ["11", "2", "undefined", "NaN"],
+    answer: "11"
+  },
+  {
+    question: "Which operator is used to concatenate multiple strings?",
+    options: ["+", "&", ".", "~"],
+    answer: "+"
+  }
 ];
 
-// Initialize global variables
-let currentQuestionIndex = 0;
-let timeLeft = 60;
-let timerInterval;
-let score = 0;
-
 // Get DOM elements
+const startPage = document.getElementById("start-page");
+const quizPage = document.getElementById("quiz-page");
+const resultPage = document.getElementById("result-page");
 const startButton = document.getElementById("start-button");
-const questionContainer = document.getElementById("question-container");
+const submitButton = document.getElementById("submit-button");
 const questionElement = document.getElementById("question");
 const optionsContainer = document.getElementById("options-container");
-const scoreContainer = document.getElementById("score-container");
-const scoreElement = document.getElementById("score-value");
-const timerElement = document.getElementById("timer");
+const scoreElement = document.getElementById("score");
+const resultContent = document.getElementById("result-content");
+const initialsInput = document.getElementById("initials-input");
 const saveButton = document.getElementById("save-button");
-const highScoresButton = document.getElementById("high-scores");
+const timeElement = document.getElementById("time");
+const correctAnswersElement = document.createElement("div"); // New element for displaying correct answers
+const timerContainer = document.getElementById("timer-container"); // Timer container element
 
-// Add event listener for start button
-startButton.addEventListener("click", startQuiz);
+let currentQuestionIndex = 0;
+let score = 0;
+let timeLeft = 60;
+let timerInterval;
+// Function to start the timer
+function startTimer() {
+  displayTimer(); // Display initial time
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    displayTimer();
 
-// Add event listener for options container
-optionsContainer.addEventListener("click", checkAnswer);
-
-// Add event listener for save button
-saveButton.addEventListener("click", saveScore);
-
-// Add event listener for high scores button
-highScoresButton.addEventListener("click", viewHighScores);
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      endQuiz();
+    }
+  }, 1000);
+}
 
 // Function to start the quiz
 function startQuiz() {
-    // Hide start button
-    startButton.classList.add("hide");
-    // Show question container
-    questionContainer.classList.remove("hide");
-    // Hide score container
-    scoreContainer.classList.add("hide");
-    // Render the first question
-    renderQuestion();
-    // Start the timer
-    timerInterval = setInterval(updateTimer, 1000);
+  startPage.classList.add("hide");
+  quizPage.classList.remove("hide");
+  startTimer();
+  showQuestion();
 }
 
-// Function to render the current question
-function renderQuestion() {
-    // Get the current question object
-    const currentQuestion = questions[currentQuestionIndex];
-    // Set the question text
-    questionElement.textContent = currentQuestion.question;
-    // Clear options container
-    optionsContainer.innerHTML = "";
-    // Loop through the options and create list items
-    currentQuestion.options.forEach((option) => {
-        // Create a list item
-        const liElement = document.createElement("li");
-        // Set the option text
-        liElement.textContent = option;
-        // Append the list item to the options container
-        optionsContainer.appendChild(liElement);
-    });
+// Function to display a question and its answer options
+function showQuestion() {
+  const question = quizQuestions[currentQuestionIndex];
+  questionElement.textContent = question.question;
+  optionsContainer.innerHTML = "";
+
+  for (let i = 0; i < question.options.length; i++) {
+    const option = document.createElement("li");
+    option.classList.add("option-list-item");
+    const input = document.createElement("input");
+    input.type = "radio";
+    input.name = "option";
+    input.id = `option-${i}`;
+    input.value = question.options[i];
+    const label = document.createElement("label");
+    label.htmlFor = `option-${i}`;
+    label.textContent = question.options[i];
+    option.appendChild(input);
+    option.appendChild(label);
+    optionsContainer.appendChild(option);
+  }
 }
 
-// Function to check the selected answer
-function checkAnswer(event) {
-    // Get the selected answer text
-    const selectedAnswer = event.target.textContent;
-    // Get the current question object
-    const currentQuestion = questions[currentQuestionIndex];
-    // Check if selected answer is correct
-    if (selectedAnswer === currentQuestion.answer) {
-        // Increment the score by 10
-        score += 10;
-        // Update the score element
-        scoreElement.textContent = score;
-    } else {
-        // Decrement time left by 10 seconds
-        timeLeft
+
+
+
+
+function selectOption(event) {
+  const selectedOption = optionsContainer.querySelector('input[name="option"]:checked');
+  const question = quizQuestions[currentQuestionIndex];
+  const selectedAnswer = selectedOption.value.trim(); // Trim the selected answer
+  const correctAnswer = question.answer.trim(); // Trim the correct answer
+
+  // Clear the selected state for all options
+  const allOptions = optionsContainer.querySelectorAll('input[name="option"]');
+  allOptions.forEach((option) => {
+    option.checked = false;
+  });
+
+  // Set the selected state for the chosen option
+  selectedOption.checked = true;
+
+  if (selectedAnswer === correctAnswer) {
+    score++;
+  } else {
+    timeLeft -= 10; // Deduct 10 seconds for incorrect answer
+    if (timeLeft < 0) {
+      timeLeft = 0; // Ensure timeLeft is not negative
+    }
+  }
+  displayTimer(); // Update the displayed time
+
+  // Move to the next question if available
+  if (currentQuestionIndex + 1 < quizQuestions.length) {
+    currentQuestionIndex++;
+    showQuestion(); // Display the next question
+  } else {
+    endQuiz(); // If there are no more questions, end the quiz
+  }
+}
+
+
+
+
+
+
+// Function to display the correct answers
+function displayCorrectAnswers() {
+  correctAnswersElement.innerHTML = ""; // Clear the previous content
+
+  for (let i = 0; i < quizQuestions.length; i++) {
+    const question = quizQuestions[i];
+    const answerElement = document.createElement("p");
+    answerElement.textContent = `Question ${i + 1}: ${question.answer}`;
+    correctAnswersElement.appendChild(answerElement);
+  }
+
+  resultContent.appendChild(correctAnswersElement);
+}
+
+// Function to save the score and initials
+function saveScore() {
+  const initials = initialsInput.value.trim();
+
+  if (initials === "") {
+    // Display an error message or prevent saving
+    return;
+  }
+
+  // Save the score and initials
+  console.log("Score:", score);
+  console.log("Initials:", initials);
+  resetQuiz();
+}
+
+
+// Function to reset the quiz
+function resetQuiz() {
+  currentQuestionIndex = 0;
+  score = 0;
+  timeLeft = 60;
+  startPage.classList.remove("hide");
+  resultPage.classList.add("hide");
+  initialsInput.value = "";
+}
+
+
+// Function to display the timer
+function displayTimer() {
+  timeElement.textContent = timeLeft;
+}
+
+// Function to handle the selected answer option (MODIFIED)
+function endQuiz() {
+  clearInterval(timerInterval);
+  quizPage.classList.add("hide");
+  resultPage.classList.remove("hide");
+  scoreElement.textContent = score;
+  displayCorrectAnswers();
+  timeLeft = 60; // Reset the timer to 60 seconds
+  timeElement.textContent = timeLeft; // Display the reset time
+}
+
+// Event listeners
+startButton.addEventListener("click", startQuiz);
+submitButton.addEventListener("click", selectOption);
+saveButton.addEventListener("click", saveScore);
+
+
+
+
+
+
+
+
+
+
+
