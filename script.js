@@ -1,5 +1,6 @@
 // Store the quiz questions and answers
 const quizQuestions = [
+  // Existing questions
   {
     question: "What is the correct syntax for referring to an external script called 'script.js'?",
     options: [
@@ -29,6 +30,87 @@ const quizQuestions = [
     question: "Which operator is used to concatenate multiple strings?",
     options: ["+", "&", ".", "~"],
     answer: "+"
+  },
+  // Additional questions
+  {
+    question: "What is the purpose of the 'splice' method in JavaScript?",
+    options: [
+      "To remove elements from an array and replace them with new elements",
+      "To add elements to the beginning of an array",
+      "To sort the elements of an array in descending order",
+      "To check if an array contains a specific element"
+    ],
+    answer: "To remove elements from an array and replace them with new elements"
+  },
+  {
+    question: "Which method is used to convert a string to an integer?",
+    options: ["parseInt()", "toString()", "toFixed()", "toUpperCase()"],
+    answer: "parseInt()"
+  },
+  {
+    question: "What is the output of the following code?\nconsole.log(typeof null);",
+    options: ["null", "object", "undefined", "number"],
+    answer: "object"
+  },
+  {
+    question: "What is the purpose of the 'slice' method in JavaScript?",
+    options: [
+      "To extract a section of an array and return a new array",
+      "To convert a string to lowercase",
+      "To find the index of a specified element in an array",
+      "To remove whitespace from both ends of a string"
+    ],
+    answer: "To extract a section of an array and return a new array"
+  },
+  {
+    question: "Which method is used to convert a string to uppercase?",
+    options: ["toUpperCase()", "toLowerCase()", "toString()", "toFixed()"],
+    answer: "toUpperCase()"
+  },
+  {
+    question: "What does the 'JSON.stringify' method do?",
+    options: [
+      "Converts a JavaScript object to a JSON string",
+      "Converts a JSON string to a JavaScript object",
+      "Parses a JSON string and returns the parsed value",
+      "Checks if a value is a valid JSON object"
+    ],
+    answer: "Converts a JavaScript object to a JSON string"
+  },
+  {
+    question: "What is the purpose of the 'forEach' method in JavaScript?",
+    options: [
+      "To execute a provided function once for each array element",
+      "To add elements to the end of an array",
+      "To reverse the order of the elements in an array",
+      "To check if an array contains a specific element"
+    ],
+    answer: "To execute a provided function once for each array element"
+  },
+  {
+    question: "What is the output of the following code?\nconsole.log(10 > '9');",
+    options: ["true", "false", "undefined", "NaN"],
+    answer: "true"
+  },
+  {
+    question: "Which method is used to remove whitespace from both ends of a string?",
+    options: ["trim()", "concat()", "replace()", "slice()"],
+    answer: "trim()"
+  },
+  {
+    question: "What is the purpose of the 'map' method in JavaScript?",
+    options: [
+      "To create a new array with the results of calling a provided function on every element in the array",
+      "To check if at least one element in the array satisfies a given condition",
+      "To return the first element that satisfies a given condition",
+      "To sort the elements of an array in ascending order"
+    ],
+    answer: "To create a new array with the results of calling a provided function on every element in the array"
+  },
+  {
+    question: "What is the output of the following code?\nconsole.log(5 == '5');",
+    options: ["true", "false", "undefined", "NaN"],
+    answer: "true"
   }
 ];
 
@@ -52,6 +134,7 @@ let currentQuestionIndex = 0;
 let score = 0;
 let timeLeft = 60;
 let timerInterval;
+
 // Function to start the timer
 function startTimer() {
   displayTimer(); // Display initial time
@@ -97,10 +180,7 @@ function showQuestion() {
   }
 }
 
-
-
-
-
+// Function to handle the selected answer option
 function selectOption(event) {
   const selectedOption = optionsContainer.querySelector('input[name="option"]:checked');
   const question = quizQuestions[currentQuestionIndex];
@@ -135,11 +215,6 @@ function selectOption(event) {
   }
 }
 
-
-
-
-
-
 // Function to display the correct answers
 function displayCorrectAnswers() {
   correctAnswersElement.innerHTML = ""; // Clear the previous content
@@ -169,7 +244,6 @@ function saveScore() {
   resetQuiz();
 }
 
-
 // Function to reset the quiz
 function resetQuiz() {
   currentQuestionIndex = 0;
@@ -180,13 +254,12 @@ function resetQuiz() {
   initialsInput.value = "";
 }
 
-
 // Function to display the timer
 function displayTimer() {
   timeElement.textContent = timeLeft;
 }
 
-// Function to handle the selected answer option (MODIFIED)
+// Function to end the quiz and display the result
 function endQuiz() {
   clearInterval(timerInterval);
   quizPage.classList.add("hide");
@@ -201,6 +274,7 @@ function endQuiz() {
 startButton.addEventListener("click", startQuiz);
 submitButton.addEventListener("click", selectOption);
 saveButton.addEventListener("click", saveScore);
+
 
 
 
