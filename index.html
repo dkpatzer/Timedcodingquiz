@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Quiz</title>
   <link rel="stylesheet" href="style.css">
+  <audio id="click-sound" src="Sounds/219476__jarredgibb__button-05.wav"></audio>
+  <audio id="start-sound" src="Sounds/657945__matrixxx__scifi-inspect-sound-ui-or-in-game-notification-01.wav"></audio>
+  <audio id="save-sound" src="Sounds/657945__matrixxx__scifi-inspect-sound-ui-or-in-game-notification-01.wav"></audio>
 </head>
+
 
 <body>
   <header>
@@ -16,9 +21,9 @@
   </header>
   <div id="start-page" class="page">
     <div class="container">
-      <h1>Code Quiz</h1>
+      <h1>JavaScript Timed Coding Quiz</h1>
       <p>Time: <span id="time">60</span></p>
-      <p>Test your coding knowledge with this quiz!</p>
+      <h3>Test your coding knowledge and maybe you will learn something new!</h3>
       <button id="start-button">Start Quiz</button>
     </div>
   </div>
@@ -35,19 +40,42 @@
     <div class="container">
       <h2>Quiz Completed!</h2>
       <p>Your score is: <span id="score"></span></p>
+      <h3 id="highest-score"></h3> <!-- Add an <h2> element for displaying the highest score -->
       <div id="result-content">
         <h3>Correct Answers:</h3>
         <div id="correct-answers"></div>
       </div>
+      
       <input type="text" id="initials-input" placeholder="Enter your initials">
       <button id="save-button">Save Score</button>
     </div>
   </div>
+  
+  
+  
+    
 
   <script src="script.js"></script>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

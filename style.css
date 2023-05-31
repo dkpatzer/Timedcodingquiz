@@ -1,6 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f1f1f1;
+  background-color: #ADD8E6; /* Light blue background */
+  color: #000080; /* Dark blue font */
 }
 
 .container {
@@ -13,7 +14,7 @@ body {
 
 h1 {
   text-align: center;
-  color: #333333;
+  color: #000080; /* Dark blue font */
 }
 
 p {
@@ -32,7 +33,7 @@ p {
 
 #start-button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #FF0000; /* Red background */
   color: #ffffff;
   border: none;
   cursor: pointer;
@@ -44,10 +45,6 @@ p {
   text-align: center;
 }
 
-#question {
-  margin-bottom: 20px;
-}
-
 #options-container {
   list-style-type: none;
   padding: 0;
@@ -56,22 +53,10 @@ p {
   align-items: flex-start;
   margin-top: 20px;
 }
-.option-list-item label {
-  display: block; /* Change from inline-block to block */
-  margin-bottom: 10px;
-}
 
-
-
-.option-list-item label {
-  display: inline-block;
-  margin-bottom: 10px;
-}
-
-
-label {
-  display: block;
-  margin-bottom: 10px;
+.option-list-item {
+  display: flex;
+  align-items: flex-start; /* Align radiobuttons vertically to the left */
 }
 
 /* Result Page */
@@ -80,20 +65,9 @@ label {
   text-align: center;
 }
 
-#result-content {
-  margin-bottom: 20px;
-}
-
-#score {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333333;
-  margin-bottom: 10px;
-}
-
 #save-button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #FF0000; /* Red background */
   color: #ffffff;
   border: none;
   cursor: pointer;
@@ -105,7 +79,7 @@ label {
   text-align: right;
   font-size: 18px;
   font-weight: bold;
-  color: #333333;
+  color: #000080; /* Dark blue font */
   margin-bottom: 20px;
 }
 
@@ -118,6 +92,11 @@ label {
 .error-message {
   color: #ff0000;
 }
+
+
+
+
+
 
 
 

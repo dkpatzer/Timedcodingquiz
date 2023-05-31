@@ -113,6 +113,9 @@ const quizQuestions = [
     answer: "true"
   }
 ];
+// Create an Audio object for the click sound
+const clickSound = new Audio("Sounds/219476__jarredgibb__button-05.wav");
+const startSound = new Audio("Sounds/657945__matrixxx__scifi-inspect-sound-ui-or-in-game-notification-01.wav");;
 
 // Get DOM elements
 const startPage = document.getElementById("start-page");
@@ -129,6 +132,8 @@ const saveButton = document.getElementById("save-button");
 const timeElement = document.getElementById("time");
 const correctAnswersElement = document.createElement("div"); // New element for displaying correct answers
 const timerContainer = document.getElementById("timer-container"); // Timer container element
+
+const highestScoreContainer = document.getElementById("highest-score-container"); // New container for highest score
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -151,6 +156,7 @@ function startTimer() {
 
 // Function to start the quiz
 function startQuiz() {
+  startSound.play(); // Play the start sound
   startPage.classList.add("hide");
   quizPage.classList.remove("hide");
   startTimer();
@@ -163,22 +169,37 @@ function showQuestion() {
   questionElement.textContent = question.question;
   optionsContainer.innerHTML = "";
 
-  for (let i = 0; i < question.options.length; i++) {
+  const shuffledOptions = shuffleArray(question.options); // Shuffle the options
+
+  for (let i = 0; i < shuffledOptions.length; i++) {
     const option = document.createElement("li");
     option.classList.add("option-list-item");
     const input = document.createElement("input");
     input.type = "radio";
     input.name = "option";
     input.id = `option-${i}`;
-    input.value = question.options[i];
+    input.value = shuffledOptions[i];
     const label = document.createElement("label");
     label.htmlFor = `option-${i}`;
-    label.textContent = question.options[i];
+    label.textContent = shuffledOptions[i];
     option.appendChild(input);
     option.appendChild(label);
     optionsContainer.appendChild(option);
   }
 }
+
+// Function to shuffle an array using Fisher-Yates algorithm
+function shuffleArray(array) {
+  const shuffledArray = array.slice(); // Create a copy of the original array
+
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[randomIndex]] = [shuffledArray[randomIndex], shuffledArray[i]];
+  }
+
+  return shuffledArray;
+}
+
 
 // Function to handle the selected answer option
 function selectOption(event) {
@@ -206,6 +227,8 @@ function selectOption(event) {
   }
   displayTimer(); // Update the displayed time
 
+  clickSound.play(); // Play the click sound
+
   // Move to the next question if available
   if (currentQuestionIndex + 1 < quizQuestions.length) {
     currentQuestionIndex++;
@@ -214,6 +237,7 @@ function selectOption(event) {
     endQuiz(); // If there are no more questions, end the quiz
   }
 }
+
 
 // Function to display the correct answers
 function displayCorrectAnswers() {
@@ -228,9 +252,12 @@ function displayCorrectAnswers() {
 
   resultContent.appendChild(correctAnswersElement);
 }
-
+ function displayTimer() {
+  timeElement.textContent = timeLeft;
+}
 // Function to save the score and initials
 function saveScore() {
+  startSound.play();
   const initials = initialsInput.value.trim();
 
   if (initials === "") {
@@ -238,10 +265,41 @@ function saveScore() {
     return;
   }
 
-  // Save the score and initials
-  console.log("Score:", score);
-  console.log("Initials:", initials);
+  const scoreData = {
+    initials: initials,
+    score: score
+  };
+
+  // Retrieve existing scores from localStorage or initialize an empty array
+  const existingScores = localStorage.getItem("scores");
+  const scores = existingScores ? JSON.parse(existingScores) : [];
+
+  // Add the new score to the scores array
+  scores.push(scoreData);
+
+  // Store the updated scores array in localStorage
+  localStorage.setItem("scores", JSON.stringify(scores));
+
   resetQuiz();
+}
+
+// Function to display the highest score
+function displayHighestScore() {
+  const existingScores = localStorage.getItem("scores");
+  const scores = existingScores ? JSON.parse(existingScores) : [];
+
+  let highestScore = 0;
+  let initials = "";
+
+  scores.forEach(scoreData => {
+    if (scoreData.score > highestScore) {
+      highestScore = scoreData.score;
+      initials = scoreData.initials;
+    }
+  });
+
+  const highestScoreElement = document.getElementById("highest-score");
+  highestScoreElement.textContent = `High Score: ${initials} - ${highestScore}`;
 }
 
 // Function to reset the quiz
@@ -254,11 +312,6 @@ function resetQuiz() {
   initialsInput.value = "";
 }
 
-// Function to display the timer
-function displayTimer() {
-  timeElement.textContent = timeLeft;
-}
-
 // Function to end the quiz and display the result
 function endQuiz() {
   clearInterval(timerInterval);
@@ -268,13 +321,15 @@ function endQuiz() {
   displayCorrectAnswers();
   timeLeft = 60; // Reset the timer to 60 seconds
   timeElement.textContent = timeLeft; // Display the reset time
+  
+  displayHighestScore(); // Call the function to display the highest score
 }
+
 
 // Event listeners
 startButton.addEventListener("click", startQuiz);
 submitButton.addEventListener("click", selectOption);
 saveButton.addEventListener("click", saveScore);
-
 
 
 
