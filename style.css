@@ -71,6 +71,14 @@ p {
   color: #ffffff;
   border: none;
   cursor: pointer;
+
+  .correct {
+    color: green;
+  }
+  
+  .incorrect {
+    color: red;
+  }
 }
 
 /* Timer */

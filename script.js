@@ -207,7 +207,7 @@ function selectOption(event) {
   const question = quizQuestions[currentQuestionIndex];
   const selectedAnswer = selectedOption.value.trim(); // Trim the selected answer
   const correctAnswer = question.answer.trim(); // Trim the correct answer
-
+  const selectedOptionParent = selectedOption.closest('li');
   // Clear the selected state for all options
   const allOptions = optionsContainer.querySelectorAll('input[name="option"]');
   allOptions.forEach((option) => {
@@ -219,11 +219,13 @@ function selectOption(event) {
 
   if (selectedAnswer === correctAnswer) {
     score++;
+    selectedOptionParent.classList.add('correct'); // Add 'correct' class to the parent <li>
   } else {
     timeLeft -= 10; // Deduct 10 seconds for incorrect answer
     if (timeLeft < 0) {
       timeLeft = 0; // Ensure timeLeft is not negative
     }
+    selectedOptionParent.classList.add('incorrect'); // Add 'incorrect' class t
   }
   displayTimer(); // Update the displayed time
 
