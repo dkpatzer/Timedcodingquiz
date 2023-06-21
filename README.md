@@ -48,6 +48,10 @@ THEN the user can save their initials and their sc
 
 
 
+
+
+
+
 ![screenshot of starting page](https://github.com/dkpatzer/Timedcodingquiz/blob/main/assets/images/Screenshot%20(143).png)
 
 ![screenshot of question](https://github.com/dkpatzer/Timedcodingquiz/blob/main/assets/images/Screenshot%20(145).png)
