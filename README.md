@@ -66,7 +66,7 @@ THEN the user can save their initials and their sc
 
 Credits:
 
-The JavaScript quiz app was developed by David Patzer as part of the NU coding bootcamp. I obtained information from many sources to help put this together. This includes w3collective, MDN for array methods and event listers, Stack Overflow, https://www.codingninjas.com/codestudio/library/how-to-create-a-quiz-app-using-javascript, YouTube video 'Build a Quiz App with JavaScript', from Web Dev Simplified, YouTube Video 'Create a Quiz App with Timer using HTML CSS & JavaScript | Quiz Web App using JavaScript' from Coding Nepal. I also used ChatGPT to check the code. 
+The JavaScript quiz app was developed by David Patzer as part of the NU coding bootcamp. I obtained information from many sources to help put this together. This includes w3collective, MDN for array methods and event listers, Stack Overflow, https://www.codingninjas.com/codestudio/library/how-to-create-a-quiz-app-using-javascript, YouTube video 'Build a Quiz App with JavaScript', from Web Dev Simplified, YouTube Video 'Create a Quiz App with Timer using HTML CSS & JavaScript | Quiz Web App using JavaScript' from Coding Nepal. The sound files came from freesound.org. I also used ChatGPT to check the code. 
 
 
 ---
