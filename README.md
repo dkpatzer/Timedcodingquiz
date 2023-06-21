@@ -49,11 +49,13 @@ THEN the user can save their initials and their sc
 
 To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
 
-![screenshot of starting page](assets/images/Screenshot(143).png)
-![screenshot of question](/assets/images/Screenshot(145).png)
-![screenshot of final page](assets/images/Screenshot(146).png)
+![screenshot of starting page](.\assets\images\Screenshot(143).png)
+![screenshot of question](.\assets\images\Screenshot(145).png)
+![screenshot of final page](.\assets\images\Screenshot(146).png)
 
-homework2\Timedcodingquiz\assets\images\Scsreenshot (143).png
+
+
+
 
 ## Credits
 
