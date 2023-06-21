@@ -47,11 +47,12 @@ WHEN the game is over
 THEN the user can save their initials and their sc
 
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
 
-![screenshot of starting page](.\assets\images\Screenshot(143).png)
-![screenshot of question](.\assets\images\Screenshot(145).png)
-![screenshot of final page](.\assets\images\Screenshot(146).png)
+![screenshot of starting page](https://github.com/dkpatzer/Timedcodingquiz/blob/main/assets/images/Screenshot%20(143).png)
+
+![screenshot of question](https://github.com/dkpatzer/Timedcodingquiz/blob/main/assets/images/Screenshot%20(145).png)
+
+![screenshot of final page](https://github.com/dkpatzer/Timedcodingquiz/blob/main/assets/images/Screenshot%20(146).png)
 
 
 
@@ -61,7 +62,7 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 
 Credits:
 
-The JavaScript quiz app was developed by David Patzer as part of the NU coding bootcamp. I obtained information from many sources to help put this together. This includes w3collective, MDN for array methods and event listers, Stack Overflow, https://www.geeksforgeeks.org/how-to-create-a-simple-javascript-quizt,YouTube video 'Build a Quiz App with JavaScript', from Web Dev Simplified, YouTube Video 'Create a Quiz App with Timer using HTML CSS & JavaScript | Quiz Web App using JavaScript' from Coding Nepal. I also used ChatGPT to check the code. 
+The JavaScript quiz app was developed by David Patzer as part of the NU coding bootcamp. I obtained information from many sources to help put this together. This includes w3collective, MDN for array methods and event listers, Stack Overflow, https://www.codingninjas.com/codestudio/library/how-to-create-a-quiz-app-using-javascript, YouTube video 'Build a Quiz App with JavaScript', from Web Dev Simplified, YouTube Video 'Create a Quiz App with Timer using HTML CSS & JavaScript | Quiz Web App using JavaScript' from Coding Nepal. I also used ChatGPT to check the code. 
 
 
 ---
